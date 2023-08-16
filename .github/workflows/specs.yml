@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install shards
-      run: shards install --ignore-crystal-version
+      run: shards install --ignore-crystal-version --skip-postinstall --skip-executables
     - name: Cache Crystal
       uses: actions/cache@v1
       with:
