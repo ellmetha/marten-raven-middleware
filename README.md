@@ -12,7 +12,7 @@ Simply add the following entry to your project's `shard.yml`:
 ```yaml
 dependencies:
   marten_raven_middleware:
-    github: martenframework/marten-raven-middleware
+    github: ellmetha/marten-raven-middleware
 ```
 
 And run `shards install` afterward.
