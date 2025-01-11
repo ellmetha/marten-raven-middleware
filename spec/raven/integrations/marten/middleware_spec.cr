@@ -21,7 +21,7 @@ describe Raven::Marten::Middleware do
           resource: "/foo/bar",
           headers: HTTP::Headers{"Host" => "example.com"}
         ),
-        ->{ Marten::HTTP::Response.new("It works!", content_type: "text/plain", status: 200) }
+        -> { Marten::HTTP::Response.new("It works!", content_type: "text/plain", status: 200) }
       )
 
       response.should be_a Marten::HTTP::Response
@@ -38,7 +38,7 @@ describe Raven::Marten::Middleware do
             resource: "/foo/bar",
             headers: HTTP::Headers{"Host" => "example.com"}
           ),
-          ->{
+          -> {
             1 // 0
             Marten::HTTP::Response.new("It works!", content_type: "text/plain", status: 200)
           }
@@ -59,7 +59,7 @@ describe Raven::Marten::Middleware do
             resource: "/foo/bar",
             headers: HTTP::Headers{"Host" => "example.com"}
           ),
-          ->{
+          -> {
             1 // 0
             Marten::HTTP::Response.new("It works!", content_type: "text/plain", status: 200)
           }
@@ -80,7 +80,7 @@ describe Raven::Marten::Middleware do
             resource: "/foo/bar?foo=bar&xyz=test",
             headers: HTTP::Headers{"Host" => "example.com"}
           ),
-          ->{
+          -> {
             1 // 0
             Marten::HTTP::Response.new("It works!", content_type: "text/plain", status: 200)
           }
@@ -108,7 +108,7 @@ describe Raven::Marten::Middleware do
             headers: HTTP::Headers{"Host" => "example.com", "Content-Type" => "application/x-www-form-urlencoded"},
             body: "foo=bar&test=xyz&foo=baz"
           ),
-          ->{
+          -> {
             1 // 0
             Marten::HTTP::Response.new("It works!", content_type: "text/plain", status: 200)
           }
@@ -138,7 +138,7 @@ describe Raven::Marten::Middleware do
             headers: HTTP::Headers{"Host" => "example.com", "Content-Type" => "application/x-www-form-urlencoded"},
             body: "foo=bar&test=xyz&foo=baz"
           ),
-          ->{
+          -> {
             1 // 0
             Marten::HTTP::Response.new("It works!", content_type: "text/plain", status: 200)
           }
@@ -168,7 +168,7 @@ describe Raven::Marten::Middleware do
             headers: HTTP::Headers{"Host" => "example.com", "Content-Type" => "application/x-www-form-urlencoded"},
             body: "foo=bar&test=xyz&foo=baz"
           ),
-          ->{
+          -> {
             1 // 0
             Marten::HTTP::Response.new("It works!", content_type: "text/plain", status: 200)
           }
@@ -200,7 +200,7 @@ describe Raven::Marten::Middleware do
       expect_raises(DivisionByZeroError) do
         middleware.call(
           request,
-          ->{
+          -> {
             1 // 0
             Marten::HTTP::Response.new("It works!", content_type: "text/plain", status: 200)
           }
@@ -224,7 +224,7 @@ describe Raven::Marten::Middleware do
             headers: HTTP::Headers{"Host" => "example.com", "Content-Type" => "application/x-www-form-urlencoded"},
             body: "foo=bar&test=xyz&foo=baz"
           ),
-          ->{
+          -> {
             raise Marten::HTTP::Errors::NotFound.new("This is bad")
             Marten::HTTP::Response.new("It works!", content_type: "text/plain", status: 200)
           }
@@ -245,7 +245,7 @@ describe Raven::Marten::Middleware do
             headers: HTTP::Headers{"Host" => "example.com", "Content-Type" => "application/x-www-form-urlencoded"},
             body: "foo=bar&test=xyz&foo=baz"
           ),
-          ->{
+          -> {
             raise Marten::Routing::Errors::NoResolveMatch.new("This is bad")
             Marten::HTTP::Response.new("It works!", content_type: "text/plain", status: 200)
           }

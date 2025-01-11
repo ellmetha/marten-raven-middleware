@@ -18,7 +18,7 @@ module Raven
     class Middleware < ::Marten::Middleware
       def call(
         request : ::Marten::HTTP::Request,
-        get_response : Proc(::Marten::HTTP::Response)
+        get_response : Proc(::Marten::HTTP::Response),
       ) : ::Marten::HTTP::Response
         get_response.call
       rescue error
