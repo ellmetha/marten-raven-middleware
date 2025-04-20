@@ -31,7 +31,7 @@ module Raven
         end
       end
 
-      private CAPTURE_DATA_FOR_METHODS = %w(POST PUT PATCH)
+      private CAPTURE_DATA_FOR_METHODS = %w[POST PUT PATCH]
 
       private def build_full_url(request)
         String.build do |url|

@@ -4,7 +4,7 @@ describe Raven::Marten::Middleware do
   around_each do |t|
     original_allowed_hosts = Marten.settings.allowed_hosts
 
-    Marten.settings.allowed_hosts = %w(example.com www.example.com)
+    Marten.settings.allowed_hosts = %w[example.com www.example.com]
 
     t.run
 
