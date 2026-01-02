@@ -226,7 +226,7 @@ describe Raven::Marten::Middleware do
           ),
           -> {
             raise Marten::HTTP::Errors::NotFound.new("This is bad")
-            Marten::HTTP::Response.new("It works!", content_type: "text/plain", status: 200)
+            Marten::HTTP::Response.new("It works!", status: 200) # ameba:disable Lint/UnreachableCode
           }
         )
 
@@ -247,7 +247,7 @@ describe Raven::Marten::Middleware do
           ),
           -> {
             raise Marten::Routing::Errors::NoResolveMatch.new("This is bad")
-            Marten::HTTP::Response.new("It works!", content_type: "text/plain", status: 200)
+            Marten::HTTP::Response.new("It works!", status: 200) # ameba:disable Lint/UnreachableCode
           }
         )
 
